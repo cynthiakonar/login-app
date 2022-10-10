@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login & SignUp',
       debugShowCheckedModeBanner: false,
-      home: signup(),
+      home: Signup(),
       routes: <String, WidgetBuilder>{
-        '/signup': (BuildContext context) => new signup(),
-        '/login': (BuildContext context) => new login(),
-        '/home': (BuildContext context) => new home(),
+        '/signup': (BuildContext context) => Signup(),
+        '/login': (BuildContext context) => Login(),
+        '/home': (BuildContext context) => Home(),
       },
     );
   }

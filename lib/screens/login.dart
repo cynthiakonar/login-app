@@ -1,15 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_signup/utilities/constants.dart';
 
-class login extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _loginState createState() => _loginState();
+  _LoginState createState() => _LoginState();
 }
 
-class _loginState extends State<login> {
+class _LoginState extends State<Login> {
   bool _rememberMe = false;
 
   Widget _buildEmailTF() {
@@ -97,7 +98,7 @@ class _loginState extends State<login> {
   }
 
   Widget _buildRememberMeCheckbox() {
-    return Container(
+    return SizedBox(
       height: 20.0,
       child: Row(
         children: <Widget>[
@@ -257,6 +258,7 @@ class _loginState extends State<login> {
 
   @override
   Widget build(BuildContext context) {
+    final w = MediaQuery.of(context).size.width;
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
@@ -281,7 +283,7 @@ class _loginState extends State<login> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: double.infinity,
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
@@ -289,31 +291,36 @@ class _loginState extends State<login> {
                     horizontal: 40.0,
                     vertical: 120.0,
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Sign In',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'OpenSans',
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: Center(
+                    child: SizedBox(
+                      width: kIsWeb ? w * 0.5 : null,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Sign In',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'OpenSans',
+                              fontSize: 30.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 30.0),
+                          _buildEmailTF(),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          _buildPasswordTF(),
+                          _buildForgotPasswordBtn(),
+                          _buildRememberMeCheckbox(),
+                          _buildLoginBtn(),
+                          _buildSignInWithText(),
+                          _buildSocialBtnRow(),
+                          _buildSignupBtn(),
+                        ],
                       ),
-                      SizedBox(height: 30.0),
-                      _buildEmailTF(),
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      _buildPasswordTF(),
-                      _buildForgotPasswordBtn(),
-                      _buildRememberMeCheckbox(),
-                      _buildLoginBtn(),
-                      _buildSignInWithText(),
-                      _buildSocialBtnRow(),
-                      _buildSignupBtn(),
-                    ],
+                    ),
                   ),
                 ),
               )
