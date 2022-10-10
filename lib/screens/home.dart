@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login_signup/utilities/constants.dart';
 
-class home extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _homeState createState() => _homeState();
+  _HomeState createState() => _HomeState();
 }
 
-class _homeState extends State<home> {
-  bool _rememberMe = false;
+class _HomeState extends State<Home> {
+  final bool _rememberMe = false;
 
   Widget _buildEmailTF() {
     return Column(
